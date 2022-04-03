@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import BorrowTab from "./BorrowTab";
 import FlexCenter from "./common/FlexCenter";
 
 // styles below
@@ -22,7 +23,7 @@ const Amount = styled(FlexCenter)`
 
 // components below
 
-const InnerHeader = () => {
+const InnerHeader = ({ switchToAsset, switchToLoan, curTab }) => {
   const dummyAccount = {
     amount: 3,
     address: `0x6C2b602b66697480f68b1e6006fccF839666d90d`,
@@ -34,6 +35,11 @@ const InnerHeader = () => {
         <Description>Total Amount Of Loans Available</Description>
         <Amount>{dummyAccount.amount} wETH</Amount>
       </div>
+      <BorrowTab
+        switchToAsset={switchToAsset}
+        switchToLoan={switchToLoan}
+        curTab={curTab}
+      />
     </InnerHeaderContainer>
   );
 };

@@ -13,11 +13,25 @@ import LoanList from "../components/LoanList";
 const Borrow = () => {
   const [curTab, setCurTab] = useState(`asset`);
 
+  const switchToAsset = () => {
+    setCurTab(`asset`);
+    console.log(curTab);
+  };
+
+  const switchToLoan = () => {
+    setCurTab(`loan`);
+    console.log(curTab);
+  };
+
   return (
     <Background>
       <OuterHeader />
       <Container>
-        <InnerHeader />
+        <InnerHeader
+          switchToAsset={switchToAsset}
+          switchToLoan={switchToLoan}
+          curTab={curTab}
+        />
         {curTab === `asset` ? <AssetList /> : <LoanList />}
       </Container>
     </Background>
