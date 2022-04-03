@@ -1,7 +1,16 @@
 import React from "react";
 
+import Background from "../components/common/Background";
+import Container from "../components/common/Container";
+import OuterHeader from "../components/OuterHeader";
+
 const Borrow = () => {
-  return <div>Borrower's page</div>;
+  return (
+    <Background>
+      <OuterHeader />
+      <Container>Borrower's page</Container>
+    </Background>
+  );
 };
 
 export default Borrow;
