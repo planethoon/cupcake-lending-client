@@ -4,22 +4,29 @@ import styled from "styled-components";
 import FlexCenter from "./common/FlexCenter";
 import StyledLink from "./common/StyledLink";
 
-const Wrapper = styled(FlexCenter)`
+const Wrapper = styled.div`
   position: absolute;
   top: 0;
   width: 100%;
   height: 64px;
-  justify-content: space-between;
 
   border: 2px solid red;
 `;
 
 const Icon = styled(FlexCenter)`
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translate(-50%, -50%);
   margin-left: 20px;
   font-size: 32px;
 `;
 
 const NavBtns = styled(FlexCenter)`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   background-color: grey;
   width: 180px;
   height: 42px;
