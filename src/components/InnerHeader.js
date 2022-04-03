@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import BorrowTab from "./BorrowTab";
 import FlexCenter from "./common/FlexCenter";
+import WalletInfo from "./WalletInfo";
 
 // styles below
 
@@ -9,6 +10,7 @@ const InnerHeaderContainer = styled(FlexCenter)`
   flex-direction: column;
   background-color: skyblue;
   height: 200px;
+  position: relative;
 `;
 
 const Description = styled.div`
@@ -31,6 +33,7 @@ const InnerHeader = ({ switchToAsset, switchToLoan, curTab }) => {
 
   return (
     <InnerHeaderContainer>
+      <WalletInfo />
       <div>
         <Description>Total Amount Of Loans Available</Description>
         <Amount>{dummyAccount.amount} wETH</Amount>
