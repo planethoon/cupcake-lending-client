@@ -29,7 +29,7 @@ const AssetList = () => {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 15px 5px;
-    overflow-y: scroll;
+    overflow-y: auto;
   `;
 
   const Preview = styled(FlexCenter)``;
