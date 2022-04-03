@@ -7,6 +7,7 @@ const StyledBtn = styled(FlexCenter)`
   height: 32px;
   padding: 0 16px;
   margin: 0 16px;
+  cursor: pointer;
 `;
 
 export default StyledBtn;
