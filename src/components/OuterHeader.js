@@ -8,7 +8,7 @@ const Wrapper = styled.div`
   position: absolute;
   top: 0;
   width: 100%;
-  height: 64px;
+  height: 80px;
 
   border: 2px solid red;
 `;
@@ -18,8 +18,8 @@ const Icon = styled(FlexCenter)`
   top: 50%;
   left: 10px;
   transform: translate(-50%, -50%);
-  margin-left: 20px;
-  font-size: 32px;
+  margin-left: 28px;
+  font-size: 42px;
 `;
 
 const NavBtns = styled(FlexCenter)`

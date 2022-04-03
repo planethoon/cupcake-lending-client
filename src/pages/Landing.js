@@ -13,6 +13,7 @@ const LandingContainer = styled(Background)`
 
 const LandingBtn = styled(StyledBtn)`
   background-color: grey;
+  width: 100px;
 `;
 
 const BtnContainer = styled.div`
