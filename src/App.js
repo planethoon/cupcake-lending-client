@@ -3,8 +3,11 @@ import Landing from "./pages/Landing";
 import Lend from "./pages/Lend";
 import Borrow from "./pages/Borrow";
 import NotFound from "./pages/NotFound";
+import Web3 from "web3";
 
 function App() {
+  const web3 = new Web3(Web3.givenProvider || "ws://localhost:8545");
+
   return (
     <div className="App">
       <Routes>

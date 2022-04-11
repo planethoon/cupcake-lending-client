@@ -26,7 +26,7 @@ const Amount = styled(FlexCenter)`
   font-weight: 700;
 `;
 
-const LendHeader = styled(FlexCenter)`
+const LendHeaderStyle = styled(FlexCenter)`
   width: 80%;
   justify-content: space-around;
 `;
@@ -34,6 +34,46 @@ const LendHeader = styled(FlexCenter)`
 const DescriptionWrapper = styled.div``;
 
 // components below
+
+const NoMetamask = () => {
+  return <div>Install Metamask to connect.</div>;
+};
+
+const BorrowHeader = ({
+  dummyAccount,
+  switchToAsset,
+  switchToLoan,
+  curTab,
+}) => {
+  return (
+    <div>
+      <div>
+        <Description>Total Amount Of Available</Description>
+        <Amount>{dummyAccount.available} wETH</Amount>
+      </div>
+      <BorrowTab
+        switchToAsset={switchToAsset}
+        switchToLoan={switchToLoan}
+        curTab={curTab}
+      />
+    </div>
+  );
+};
+
+const LendHeader = ({ dummyAccount }) => {
+  return (
+    <LendHeaderStyle>
+      <DescriptionWrapper>
+        <Description>Total Loan Volume in Progress</Description>
+        <Amount>{dummyAccount.inprogress} wETH</Amount>
+      </DescriptionWrapper>
+      <div>
+        <Description>Total Earn</Description>
+        <Amount>{dummyAccount.totalearn} wETH</Amount>
+      </div>
+    </LendHeaderStyle>
+  );
+};
 
 const InnerHeader = ({ switchToAsset, switchToLoan, curTab }) => {
   const dummyAccount = {
@@ -44,33 +84,25 @@ const InnerHeader = ({ switchToAsset, switchToLoan, curTab }) => {
   };
 
   const location = useLocation();
-
+  console.log(window.ethereum);
   return (
     <InnerHeaderContainer>
-      <WalletInfo />
-      {location.pathname === "/borrow" ? (
-        <div>
-          <div>
-            <Description>Total Amount Of Available</Description>
-            <Amount>{dummyAccount.available} wETH</Amount>
-          </div>
-          <BorrowTab
-            switchToAsset={switchToAsset}
-            switchToLoan={switchToLoan}
-            curTab={curTab}
-          />
-        </div>
+      {typeof window.ethereum !== undefined ? (
+        <NoMetamask />
       ) : (
-        <LendHeader>
-          <DescriptionWrapper>
-            <Description>Total Loan Volume in Progress</Description>
-            <Amount>{dummyAccount.inprogress} wETH</Amount>
-          </DescriptionWrapper>
-          <div>
-            <Description>Total Earn</Description>
-            <Amount>{dummyAccount.totalearn} wETH</Amount>
-          </div>
-        </LendHeader>
+        <>
+          <WalletInfo />
+          {location.pathname === "/borrow" ? (
+            <BorrowHeader
+              dummyAccount={dummyAccount}
+              switchToAsset={switchToAsset}
+              switchToLoan={switchToLoan}
+              curTab={curTab}
+            />
+          ) : (
+            <LendHeader dummyAccount={dummyAccount} />
+          )}
+        </>
       )}
     </InnerHeaderContainer>
   );
