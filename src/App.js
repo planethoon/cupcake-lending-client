@@ -12,7 +12,7 @@ function App() {
   const [account, setAccount] = useState(null);
   const [chainId, setChainId] = useState(null);
 
-  console.log("체인 아이디 추적", chainId);
+  // console.log("체인 아이디 추적", chainId);
 
   const [isConnected, setIsConnected] = useState(false);
   useEffect(() => {
@@ -22,9 +22,10 @@ function App() {
 
     ethereum.request({ method: "eth_accounts" }).then((res) => {
       if (!res.length) {
-        console.log("아직 연결 안됌");
+        // console.log("아직 연결 안됌");
+        setIsConnected(false);
       } else {
-        console.log("연결됌!");
+        // console.log("연결됌!");
         setAccount(res[0]);
         setIsConnected(true);
       }
