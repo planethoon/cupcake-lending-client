@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import Web3 from "web3";
 
 // styles below
 import Background from "../components/common/Background";
 import Container from "../components/common/Container";
 import OuterHeader from "../components/OuterHeader";
+import StyledBtn from "../components/common/StyledBtn";
+import StyledLink from "../components/common/StyledLink";
 
 // components below
 import PickaPlan from "../components/PickaPlan";
@@ -33,9 +36,46 @@ const Card = styled.div`
   margin: 20px;
 `;
 
-const NftCard = () => {
-  const [curTab, setCurTab] = useState(`asset`);
+const LandingBtn = styled(StyledBtn)`
+  background-color: grey;
+  width: 100px;
+`;
 
+const BtnContainer = styled.div`
+  border: 1px solid pink;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+`;
+
+const Title = styled.div`
+  font-size: 24px;
+  margin: 20px 0;
+`;
+
+function NftCard() {
+  const [web3, setWeb3] = useState();
+  const [account, setAccount] = useState("");
+
+  useEffect(() => {
+    if (typeof window.ethereum !== "undefined") {
+      try {
+        const web = new Web3(window.ethereum);
+        setWeb3(web);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  }, []);
+
+  const connectWallet = async () => {
+    var accounts = await window.ethereum.request({
+      method: "eth_requestAccounts",
+    });
+
+    setAccount(accounts[0]);
+  };
   return (
     <Background>
       <OuterHeader />
@@ -68,11 +108,23 @@ const NftCard = () => {
               <div>Repay: 25wETH</div>
             </CardContainer>
           </Card>
-          <div>대출을 진행하시겠습니까?</div>
+          <Title>대출을 진행하시겠습니까?</Title>
+          <BtnContainer>
+            <StyledLink to="/borrow">
+              <LandingBtn>NO</LandingBtn>
+            </StyledLink>
+            <LandingBtn
+              onClick={() => {
+                connectWallet();
+              }}
+            >
+              <StyledLink to="/Result">YES</StyledLink>
+            </LandingBtn>
+          </BtnContainer>
         </CardList>
       </Container>
     </Background>
   );
-};
+}
 
 export default NftCard;

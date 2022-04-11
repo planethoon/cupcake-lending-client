@@ -69,9 +69,7 @@ const Borrow = () => {
           switchToLoan={switchToLoan}
           curTab={curTab}
         />
-        <StyledLink to="/NftCard">
-          {curTab === `asset` ? <AssetList dummy={dummy} /> : <LoanList />}
-        </StyledLink>
+        {curTab === `asset` ? <AssetList dummy={dummy} /> : <LoanList />}
       </Container>
     </Background>
   );
