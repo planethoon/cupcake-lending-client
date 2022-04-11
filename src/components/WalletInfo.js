@@ -19,28 +19,7 @@ const TextWrapper = styled.div`
   margin: 2px 0;
 `;
 
-const WalletInfo = () => {
-  const ethereum = window.ethereum;
-
-  const [network, setNetwork] = useState("No Network");
-  const [address, setAddress] = useState("Connect Wallet First");
-
-  useEffect(() => {
-    if (ethereum.chainId === "0x1") {
-      setNetwork("Ethereum MainNet");
-    } else if (ethereum.chainId === "0x3") {
-      setNetwork("Ropsten TestNet");
-    } else if (ethereum.chainId === "0x4") {
-      setNetwork("Rinkeby TestNet");
-    } else if (ethereum.chainId === "0x5") {
-      setNetwork("Goerli TestNet");
-    } else if (ethereum.chainId === "0x2a") {
-      setNetwork("Kovan TestNet");
-    } else {
-      setNetwork("Unknown Network");
-    }
-  }, []);
-
+const WalletInfo = ({ account, network }) => {
   return (
     <Wrapper>
       <TextWrapper>
@@ -49,7 +28,7 @@ const WalletInfo = () => {
       </TextWrapper>
       <TextWrapper>
         <span>🪪</span>
-        <span>{address.slice(0, 5) + "...." + address.slice(-6)}</span>
+        <span>{account.slice(0, 5) + "...." + account.slice(-6)}</span>
       </TextWrapper>
     </Wrapper>
   );

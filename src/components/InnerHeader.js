@@ -49,10 +49,24 @@ const NoMetamask = () => {
   return <div>Install Metamask to connect.</div>;
 };
 
-const ConnectWallet = ({ setAccounts }) => {
+const ConnectWallet = ({ setAccount, setNetwork }) => {
+  const ethereum = window.ethereum;
   const handleConnect = async () => {
     window.ethereum.request({ method: "eth_requestAccounts" }).then((acc) => {
-      setAccounts(acc[0]);
+      setAccount(acc[0]);
+      if (ethereum.chainId === "0x1") {
+        setNetwork("Ethereum MainNet");
+      } else if (ethereum.chainId === "0x3") {
+        setNetwork("Ropsten TestNet");
+      } else if (ethereum.chainId === "0x4") {
+        setNetwork("Rinkeby TestNet");
+      } else if (ethereum.chainId === "0x5") {
+        setNetwork("Goerli TestNet");
+      } else if (ethereum.chainId === "0x2a") {
+        setNetwork("Kovan TestNet");
+      } else {
+        setNetwork("Unknown Network");
+      }
     });
   };
 
@@ -108,23 +122,34 @@ const InnerHeader = ({ switchToAsset, switchToLoan, curTab }) => {
   };
   const location = useLocation();
   const ethereum = window.ethereum || "undefined";
-  const [accounts, setAccounts] = useState(null);
 
-  console.log("이너 헤드", window.ethereum);
-  console.log("isConnected");
+  const [isConnected, setIsConnected] = useState(false);
+  const [account, setAccount] = useState(null);
+  const [network, setNetwork] = useState("No Network");
 
-  // useEffect(() => {
-  //   if (typeof window.ethereum !== "undefined" && ethereum.isConnected()) {
-  //   }
-  // }, []);
+  console.log(ethereum);
+
+  useEffect(() => {
+    console.log("network", network);
+    console.log("account", account);
+  }, [network, account]);
+
+  useEffect(() => {
+    console.log("IsConnected?", isConnected);
+  }, [isConnected]);
+
+  ethereum.on("connect", (connectInfo) => {
+    console.log("커넥트 정보", connectInfo);
+    setIsConnected(true);
+  });
 
   return (
     <InnerHeaderContainer>
       {typeof window.ethereum === "undefined" ? (
         <NoMetamask />
-      ) : typeof window.ethereum !== "undefined" && ethereum.isConnected() ? (
+      ) : isConnected ? (
         <>
-          <WalletInfo />
+          <WalletInfo account={account} network={network} />
           {location.pathname === "/borrow" ? (
             <BorrowHeader
               dummyAccount={dummyAccount}
@@ -137,7 +162,7 @@ const InnerHeader = ({ switchToAsset, switchToLoan, curTab }) => {
           )}
         </>
       ) : (
-        <ConnectWallet setAccounts={setAccounts} />
+        <ConnectWallet setAccount={setAccount} setNetwork={setNetwork} />
       )}
     </InnerHeaderContainer>
   );
