@@ -4,11 +4,9 @@ import Lend from "./pages/Lend";
 import Borrow from "./pages/Borrow";
 import NotFound from "./pages/NotFound";
 import NftCard from "./pages/NftCard";
-import Web3 from "web3";
+import Result from "./pages/Result";
 
 function App() {
-  const web3 = new Web3(Web3.givenProvider || "ws://localhost:8545");
-
   return (
     <div className="App">
       <Routes>
@@ -17,6 +15,7 @@ function App() {
         <Route path="/lend" element={<Lend />} />
         <Route path="/*" element={<NotFound />} />
         <Route path="/NftCard" element={<NftCard />} />
+        <Route path="/Result" element={<Result />} />
       </Routes>
     </div>
   );

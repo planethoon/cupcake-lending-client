@@ -53,7 +53,7 @@ const AssetList = ({ dummy }) => {
       {dummy.map((e) => {
         return (
           <Preview>
-            <PreviewLink to="/">
+            <PreviewLink to="/NftCard">
               <PreviewImg src={e.img} alt={e.img} />
               <PriceWrapper>
                 <PreviewPrice>{e.price} wETH</PreviewPrice>

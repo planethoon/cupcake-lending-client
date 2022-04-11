@@ -19,16 +19,16 @@ const Description = styled(FlexCenter)`
   margin: 8px 0;
 `;
 
-const PickaPlan = () => {
+const ResultTab = () => {
   return (
     <InnerHeaderContainer>
       <div>
         <div>
-          <Description>Pick a Plan</Description>
+          <Description>Result</Description>
         </div>
       </div>
     </InnerHeaderContainer>
   );
 };
 
-export default PickaPlan;
+export default ResultTab;
