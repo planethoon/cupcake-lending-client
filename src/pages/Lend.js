@@ -5,6 +5,7 @@ import Container from "../components/common/Container";
 import OuterHeader from "../components/OuterHeader";
 
 import InnerHeader from "../components/InnerHeader";
+import PlanList from "../components/PlanList";
 
 const Lend = ({
   account,
@@ -24,7 +25,7 @@ const Lend = ({
           setIsConnected={setIsConnected}
           chainId={chainId}
         />
-        <div>loan lists</div>
+        <PlanList />
       </Container>
     </Background>
   );
