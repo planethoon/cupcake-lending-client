@@ -6,12 +6,24 @@ import OuterHeader from "../components/OuterHeader";
 
 import InnerHeader from "../components/InnerHeader";
 
-const Lend = () => {
+const Lend = ({
+  account,
+  setAccount,
+  isConnected,
+  setIsConnected,
+  chainId,
+}) => {
   return (
     <Background>
       <OuterHeader />
       <Container>
-        <InnerHeader />
+        <InnerHeader
+          account={account}
+          setAccount={setAccount}
+          isConnected={isConnected}
+          setIsConnected={setIsConnected}
+          chainId={chainId}
+        />
         <div>loan lists</div>
       </Container>
     </Background>

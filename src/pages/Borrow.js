@@ -31,7 +31,13 @@ const dummy = [
   { img: "https://via.placeholder.com/650", price: 0.3 },
 ];
 
-const Borrow = () => {
+const Borrow = ({
+  isConnected,
+  setIsConnected,
+  account,
+  setAccount,
+  chainId,
+}) => {
   const [curTab, setCurTab] = useState(`asset`);
 
   // const [totalAmount, setTotalAmount] = useState(0);
@@ -63,8 +69,21 @@ const Borrow = () => {
           switchToAsset={switchToAsset}
           switchToLoan={switchToLoan}
           curTab={curTab}
+          account={account}
+          setAccount={setAccount}
+          isConnected={isConnected}
+          setIsConnected={setIsConnected}
+          chainId={chainId}
         />
-        {curTab === `asset` ? <AssetList dummy={dummy} /> : <LoanList />}
+        {isConnected ? (
+          curTab === `asset` ? (
+            <AssetList dummy={dummy} />
+          ) : (
+            <LoanList />
+          )
+        ) : (
+          <div>No Data</div>
+        )}
       </Container>
     </Background>
   );

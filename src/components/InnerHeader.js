@@ -52,21 +52,8 @@ const NoMetamask = () => {
 const ConnectWallet = ({ setAccount, setNetwork }) => {
   const ethereum = window.ethereum;
   const handleConnect = async () => {
-    window.ethereum.request({ method: "eth_requestAccounts" }).then((acc) => {
-      setAccount(acc[0]);
-      if (ethereum.chainId === "0x1") {
-        setNetwork("Ethereum MainNet");
-      } else if (ethereum.chainId === "0x3") {
-        setNetwork("Ropsten TestNet");
-      } else if (ethereum.chainId === "0x4") {
-        setNetwork("Rinkeby TestNet");
-      } else if (ethereum.chainId === "0x5") {
-        setNetwork("Goerli TestNet");
-      } else if (ethereum.chainId === "0x2a") {
-        setNetwork("Kovan TestNet");
-      } else {
-        setNetwork("Unknown Network");
-      }
+    ethereum.request({ method: "eth_requestAccounts" }).then((res) => {
+      setAccount(res[0]);
     });
   };
 
@@ -113,7 +100,16 @@ const LendHeader = ({ dummyAccount }) => {
   );
 };
 
-const InnerHeader = ({ switchToAsset, switchToLoan, curTab }) => {
+const InnerHeader = ({
+  switchToAsset,
+  switchToLoan,
+  curTab,
+  isConnected,
+  setIsConnected,
+  account,
+  setAccount,
+  chainId,
+}) => {
   const dummyAccount = {
     available: 3,
     address: `0x6C2b602b66697480f68b1e6006fccF839666d90d`,
@@ -121,27 +117,24 @@ const InnerHeader = ({ switchToAsset, switchToLoan, curTab }) => {
     totalearn: 10,
   };
   const location = useLocation();
-  const ethereum = window.ethereum || "undefined";
 
-  const [isConnected, setIsConnected] = useState(false);
-  const [account, setAccount] = useState(null);
   const [network, setNetwork] = useState("No Network");
 
-  console.log(ethereum);
-
   useEffect(() => {
-    console.log("network", network);
-    console.log("account", account);
-  }, [network, account]);
-
-  useEffect(() => {
-    console.log("IsConnected?", isConnected);
-  }, [isConnected]);
-
-  ethereum.on("connect", (connectInfo) => {
-    console.log("커넥트 정보", connectInfo);
-    setIsConnected(true);
-  });
+    if (chainId === "0x1") {
+      setNetwork("Ethereum MainNet");
+    } else if (chainId === "0x3") {
+      setNetwork("Ropsten TestNet");
+    } else if (chainId === "0x4") {
+      setNetwork("Rinkeby TestNet");
+    } else if (chainId === "0x5") {
+      setNetwork("Goerli TestNet");
+    } else if (chainId === "0x2a") {
+      setNetwork("Kovan TestNet");
+    } else {
+      setNetwork("Unknown Network");
+    }
+  }, [chainId]);
 
   return (
     <InnerHeaderContainer>
@@ -162,7 +155,7 @@ const InnerHeader = ({ switchToAsset, switchToLoan, curTab }) => {
           )}
         </>
       ) : (
-        <ConnectWallet setAccount={setAccount} setNetwork={setNetwork} />
+        <ConnectWallet setAccount={setAccount} />
       )}
     </InnerHeaderContainer>
   );
