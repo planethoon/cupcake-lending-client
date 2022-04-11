@@ -64,10 +64,6 @@ const Borrow = () => {
           switchToLoan={switchToLoan}
           curTab={curTab}
         />
-<<<<<<< HEAD
-
-=======
->>>>>>> b679601223d04d4905ed67b163bec1512e68ccb6
         {curTab === `asset` ? <AssetList dummy={dummy} /> : <LoanList />}
       </Container>
     </Background>

@@ -51,7 +51,9 @@ const NoMetamask = () => {
 
 const ConnectWallet = () => {
   const handleConnect = async () => {
-    window.ethereum.request({ method: "eth_requestAccounts" });
+    var accounts = window.ethereum.request({ method: "eth_requestAccounts" });
+
+    // setAccounts
   };
 
   return (

@@ -7,14 +7,6 @@ import NftCard from "./pages/NftCard";
 import Result from "./pages/Result";
 
 function App() {
-<<<<<<< HEAD
-  const web3 = new Web3(Web3.givenProvider || "ws://localhost:8545");
-  const ethereum = window.ethereum;
-
-  ethereum.on("chainChanged", (_chainId) => window.location.reload());
-
-=======
->>>>>>> b679601223d04d4905ed67b163bec1512e68ccb6
   return (
     <div className="App">
       <Routes>
@@ -23,11 +15,8 @@ function App() {
         <Route path="/lend" element={<Lend />} />
         <Route path="/nftcard" element={<NftCard />} />
         <Route path="/*" element={<NotFound />} />
-<<<<<<< HEAD
-=======
         <Route path="/NftCard" element={<NftCard />} />
         <Route path="/Result" element={<Result />} />
->>>>>>> b679601223d04d4905ed67b163bec1512e68ccb6
       </Routes>
     </div>
   );
