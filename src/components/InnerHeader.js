@@ -49,11 +49,11 @@ const NoMetamask = () => {
   return <div>Install Metamask to connect.</div>;
 };
 
-const ConnectWallet = () => {
+const ConnectWallet = ({ setAccounts }) => {
   const handleConnect = async () => {
-    var accounts = window.ethereum.request({ method: "eth_requestAccounts" });
-
-    // setAccounts
+    window.ethereum.request({ method: "eth_requestAccounts" }).then((acc) => {
+      setAccounts(acc[0]);
+    });
   };
 
   return (
@@ -108,6 +108,7 @@ const InnerHeader = ({ switchToAsset, switchToLoan, curTab }) => {
   };
   const location = useLocation();
   const ethereum = window.ethereum || "undefined";
+  const [accounts, setAccounts] = useState(null);
 
   console.log("이너 헤드", window.ethereum);
   console.log("isConnected");
@@ -136,7 +137,7 @@ const InnerHeader = ({ switchToAsset, switchToLoan, curTab }) => {
           )}
         </>
       ) : (
-        <ConnectWallet />
+        <ConnectWallet setAccounts={setAccounts} />
       )}
     </InnerHeaderContainer>
   );

@@ -118,7 +118,7 @@ function NftCard() {
                 connectWallet();
               }}
             >
-              <StyledLink to="/Result">YES</StyledLink>
+              <StyledLink to="/result">YES</StyledLink>
             </LandingBtn>
           </BtnContainer>
         </CardList>

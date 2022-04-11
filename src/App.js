@@ -14,9 +14,8 @@ function App() {
         <Route path="/borrow" element={<Borrow />} />
         <Route path="/lend" element={<Lend />} />
         <Route path="/nftcard" element={<NftCard />} />
+        <Route path="/result" element={<Result />} />
         <Route path="/*" element={<NotFound />} />
-        <Route path="/NftCard" element={<NftCard />} />
-        <Route path="/Result" element={<Result />} />
       </Routes>
     </div>
   );

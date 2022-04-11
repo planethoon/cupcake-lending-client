@@ -42,7 +42,7 @@ const Result = () => {
         <ResultTab />
         <Title>Successed!</Title>
         <BtnContainer>
-          <StyledLink to="/Loan">
+          <StyledLink to="/borrow">
             <ContinueBtn>Continue</ContinueBtn>
           </StyledLink>
         </BtnContainer>
