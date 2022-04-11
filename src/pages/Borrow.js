@@ -1,9 +1,12 @@
 import React, { useState } from "react";
+import styled from "styled-components";
 
 // styles below
 import Background from "../components/common/Background";
 import Container from "../components/common/Container";
 import OuterHeader from "../components/OuterHeader";
+import StyledBtn from "../components/common/StyledBtn";
+import StyledLink from "../components/common/StyledLink";
 
 // components below
 import InnerHeader from "../components/InnerHeader";
@@ -27,6 +30,11 @@ const dummy = [
   { img: "https://via.placeholder.com/650", price: 11 },
   { img: "https://via.placeholder.com/650", price: 0.3 },
 ];
+
+const LandingBtn = styled(StyledBtn)`
+  background-color: none;
+  width: 100px;
+`;
 
 const Borrow = () => {
   const [curTab, setCurTab] = useState(`asset`);
@@ -61,7 +69,9 @@ const Borrow = () => {
           switchToLoan={switchToLoan}
           curTab={curTab}
         />
-        {curTab === `asset` ? <AssetList dummy={dummy} /> : <LoanList />}
+        <StyledLink to="/NftCard">
+          {curTab === `asset` ? <AssetList dummy={dummy} /> : <LoanList />}
+        </StyledLink>
       </Container>
     </Background>
   );

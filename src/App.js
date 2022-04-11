@@ -3,6 +3,7 @@ import Landing from "./pages/Landing";
 import Lend from "./pages/Lend";
 import Borrow from "./pages/Borrow";
 import NotFound from "./pages/NotFound";
+import NftCard from "./pages/NftCard";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="/borrow" element={<Borrow />} />
         <Route path="/lend" element={<Lend />} />
         <Route path="/*" element={<NotFound />} />
+        <Route path="/NftCard" element={<NftCard />} />
       </Routes>
     </div>
   );
