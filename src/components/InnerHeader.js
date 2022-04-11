@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 
@@ -33,10 +33,32 @@ const LendHeaderStyle = styled(FlexCenter)`
 
 const DescriptionWrapper = styled.div``;
 
+const ConnectBtn = styled(FlexCenter)`
+  cursor: pointer;
+  width: 200px;
+  height: 50px;
+  border: 1px solid black;
+  font-size: 18px;
+  background-color: pink;
+  border-radius: 10px;
+`;
+
 // components below
 
 const NoMetamask = () => {
   return <div>Install Metamask to connect.</div>;
+};
+
+const ConnectWallet = () => {
+  const handleConnect = async () => {
+    window.ethereum.request({ method: "eth_requestAccounts" });
+  };
+
+  return (
+    <ConnectBtn onClick={handleConnect}>
+      <span>Connect Wallet</span>
+    </ConnectBtn>
+  );
 };
 
 const BorrowHeader = ({
@@ -82,14 +104,22 @@ const InnerHeader = ({ switchToAsset, switchToLoan, curTab }) => {
     inprogress: 5,
     totalearn: 10,
   };
-
   const location = useLocation();
-  console.log(window.ethereum);
+  const ethereum = window.ethereum || "undefined";
+
+  console.log("이너 헤드", window.ethereum);
+  console.log("isConnected");
+
+  // useEffect(() => {
+  //   if (typeof window.ethereum !== "undefined" && ethereum.isConnected()) {
+  //   }
+  // }, []);
+
   return (
     <InnerHeaderContainer>
-      {typeof window.ethereum !== undefined ? (
+      {typeof window.ethereum === "undefined" ? (
         <NoMetamask />
-      ) : (
+      ) : typeof window.ethereum !== "undefined" && ethereum.isConnected() ? (
         <>
           <WalletInfo />
           {location.pathname === "/borrow" ? (
@@ -103,6 +133,8 @@ const InnerHeader = ({ switchToAsset, switchToLoan, curTab }) => {
             <LendHeader dummyAccount={dummyAccount} />
           )}
         </>
+      ) : (
+        <ConnectWallet />
       )}
     </InnerHeaderContainer>
   );

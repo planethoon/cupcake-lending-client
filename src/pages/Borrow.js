@@ -31,11 +31,6 @@ const dummy = [
   { img: "https://via.placeholder.com/650", price: 0.3 },
 ];
 
-const LandingBtn = styled(StyledBtn)`
-  background-color: none;
-  width: 100px;
-`;
-
 const Borrow = () => {
   const [curTab, setCurTab] = useState(`asset`);
 
@@ -69,9 +64,8 @@ const Borrow = () => {
           switchToLoan={switchToLoan}
           curTab={curTab}
         />
-        <StyledLink to="/NftCard">
-          {curTab === `asset` ? <AssetList dummy={dummy} /> : <LoanList />}
-        </StyledLink>
+
+        {curTab === `asset` ? <AssetList dummy={dummy} /> : <LoanList />}
       </Container>
     </Background>
   );

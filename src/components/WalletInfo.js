@@ -1,11 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import FlexCenter from "./common/FlexCenter";
-
-const dummyData = {
-  address: "0x6C2b602b66697480f68b1e6006fccF839666d90d",
-  network: "Ropsten Network",
-};
 
 const Wrapper = styled(FlexCenter)`
   width: 140px;
@@ -25,17 +20,36 @@ const TextWrapper = styled.div`
 `;
 
 const WalletInfo = () => {
+  const ethereum = window.ethereum;
+
+  const [network, setNetwork] = useState("No Network");
+  const [address, setAddress] = useState("Connect Wallet First");
+
+  useEffect(() => {
+    if (ethereum.chainId === "0x1") {
+      setNetwork("Ethereum MainNet");
+    } else if (ethereum.chainId === "0x3") {
+      setNetwork("Ropsten TestNet");
+    } else if (ethereum.chainId === "0x4") {
+      setNetwork("Rinkeby TestNet");
+    } else if (ethereum.chainId === "0x5") {
+      setNetwork("Goerli TestNet");
+    } else if (ethereum.chainId === "0x2a") {
+      setNetwork("Kovan TestNet");
+    } else {
+      setNetwork("Unknown Network");
+    }
+  }, []);
+
   return (
     <Wrapper>
       <TextWrapper>
         <span>🛰</span>
-        <span>{dummyData.network}</span>
+        <span>{network}</span>
       </TextWrapper>
       <TextWrapper>
         <span>🪪</span>
-        <span>
-          {dummyData.address.slice(0, 5) + "...." + dummyData.address.slice(-6)}
-        </span>
+        <span>{address.slice(0, 5) + "...." + address.slice(-6)}</span>
       </TextWrapper>
     </Wrapper>
   );

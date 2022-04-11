@@ -8,6 +8,9 @@ import Web3 from "web3";
 
 function App() {
   const web3 = new Web3(Web3.givenProvider || "ws://localhost:8545");
+  const ethereum = window.ethereum;
+
+  ethereum.on("chainChanged", (_chainId) => window.location.reload());
 
   return (
     <div className="App">
@@ -15,8 +18,8 @@ function App() {
         <Route path="/" element={<Landing />} />
         <Route path="/borrow" element={<Borrow />} />
         <Route path="/lend" element={<Lend />} />
+        <Route path="/nftcard" element={<NftCard />} />
         <Route path="/*" element={<NotFound />} />
-        <Route path="/NftCard" element={<NftCard />} />
       </Routes>
     </div>
   );
