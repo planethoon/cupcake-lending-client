@@ -129,7 +129,7 @@ const ListWrapper = styled.div`
   align-items: center;
 `;
 
-const LoanList = () => {
+const LoanList = ({ setIsModalActive, setCurLoan }) => {
   return (
     <OuterWrapper>
       <Indexes>
@@ -156,6 +156,9 @@ const LoanList = () => {
             earn={e.earn}
             createdAt={e.createdAt}
             status={e.status}
+            setIsModalActive={setIsModalActive}
+            setCurLoan={setCurLoan}
+            loanInfo={e}
           />
         ))}
       </ListWrapper>
