@@ -32,6 +32,15 @@ const dummy = [
   { img: "https://via.placeholder.com/650", price: 0.3 },
 ];
 
+const RepayModal = ({ account, loanInfo }) => {
+  const ModalContainer = styled.div`
+    width: 400px;
+    height: 400px;
+  `;
+
+  return <ModalContainer></ModalContainer>;
+};
+
 const Borrow = ({
   isConnected,
   setIsConnected,
@@ -41,6 +50,7 @@ const Borrow = ({
 }) => {
   const [curTab, setCurTab] = useState(`asset`);
   const [loanlist, setLoanlist] = useState({});
+  const [isModalActive, setIsModalActive] = useState(false);
 
   // const [totalAmount, setTotalAmount] = useState(0);
 
@@ -59,6 +69,7 @@ const Borrow = ({
       setLoanlist(res);
     });
   };
+
   useEffect(() => {
     getLoanlist();
   }, []);
@@ -97,6 +108,7 @@ const Borrow = ({
           <div>No Data</div>
         )}
       </Container>
+      {isModalActive ? <RepayModal /> : null}
     </Background>
   );
 };

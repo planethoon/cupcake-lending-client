@@ -39,7 +39,7 @@ const dummyData = [
     duration: 7776000,
     earn: 2.4,
     createdAt: 1648987946,
-    status: "inprogress",
+    status: "overdue",
   },
   {
     img: "https://via.placeholder.com/150",
@@ -48,7 +48,7 @@ const dummyData = [
     duration: 7776000,
     earn: 2.4,
     createdAt: 1648987946,
-    status: "inprogress",
+    status: "overdue",
   },
   {
     img: "https://via.placeholder.com/150",
@@ -57,7 +57,7 @@ const dummyData = [
     duration: 7776000,
     earn: 2.4,
     createdAt: 1648987946,
-    status: "inprogress",
+    status: "complete",
   },
   {
     img: "https://via.placeholder.com/150",
@@ -66,7 +66,7 @@ const dummyData = [
     duration: 7776000,
     earn: 2.4,
     createdAt: 1648987946,
-    status: "inprogress",
+    status: "complete",
   },
 ];
 
