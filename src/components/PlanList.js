@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import axios from "axios";
+
 import FlexCenter from "./common/FlexCenter";
 
 import StyledBtn from "./common/StyledBtn";
@@ -205,7 +207,20 @@ const PlanContainer = () => {
   );
 };
 
-const PlanList = ({ isConnected }) => {
+const PlanList = ({ isConnected, account }) => {
+  const [planlist, setPlanlist] = useState({});
+
+  // const getPlanData = () => {
+  //   const endpoint = `https://localhost:3000/planlist?address=${account}`;
+  //   axios.get(endpoint).then((res) => {
+  //     setPlanlist(res);
+  //   });
+  // };
+
+  // useEffect(() => {
+  //   getPlanData();
+  // });
+
   return (
     <div>
       {isConnected ? (

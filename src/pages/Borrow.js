@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import axios from "axios";
 
 // styles below
 import Background from "../components/common/Background";
@@ -39,6 +40,7 @@ const Borrow = ({
   chainId,
 }) => {
   const [curTab, setCurTab] = useState(`asset`);
+  const [loanlist, setLoanlist] = useState({});
 
   // const [totalAmount, setTotalAmount] = useState(0);
 
@@ -50,6 +52,16 @@ const Borrow = ({
 
   //   setTotalAmount(total);
   // }, []);
+
+  const getLoanlist = () => {
+    const endpoint = `https://localhost:3000/loanlist?b-borrowerAddress=${account}`;
+    axios.get(endpoint).then((res) => {
+      setLoanlist(res);
+    });
+  };
+  useEffect(() => {
+    getLoanlist();
+  }, []);
 
   const switchToAsset = () => {
     setCurTab(`asset`);
