@@ -6,6 +6,10 @@ import Borrow from "./pages/Borrow";
 import NotFound from "./pages/NotFound";
 import NftCard from "./pages/NftCard";
 import Result from "./pages/Result";
+import AddPlan from "./pages/AddPlan";
+import LendResult from "./pages/LendResult";
+import Loan from "./pages/Loan";
+import LoanInformation from "./pages/LoanInformation";
 
 function App() {
   const ethereum = window.ethereum;
@@ -76,6 +80,10 @@ function App() {
         <Route path="/nftcard" element={<NftCard />} />
         <Route path="/result" element={<Result />} />
         <Route path="/*" element={<NotFound />} />
+        <Route path="/AddPlan" element={<AddPlan />} />
+        <Route path="/LendResult" element={<LendResult />} />
+        <Route path="/Loan" element={<Loan />} />
+        <Route path="/LoanInformation" element={<LoanInformation />} />
       </Routes>
     </div>
   );

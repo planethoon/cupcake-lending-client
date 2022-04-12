@@ -13,7 +13,7 @@ import ResultTab from "../components/ResultTab";
 
 const ContinueBtn = styled(StyledBtn)`
   background-color: grey;
-  width: 100px;
+  width: 150px;
 `;
 
 const BtnContainer = styled.div`
@@ -32,7 +32,7 @@ const Title = styled.div`
   justify-content: center;
 `;
 
-const Result = () => {
+const LendResult = () => {
   const [curTab, setCurTab] = useState(`Loan`);
 
   return (
@@ -42,8 +42,11 @@ const Result = () => {
         <ResultTab />
         <Title>Successed!</Title>
         <BtnContainer>
-          <StyledLink to="/borrow">
-            <ContinueBtn>Continue</ContinueBtn>
+          <StyledLink to="/AddPlan">
+            <ContinueBtn>add a Plan</ContinueBtn>
+          </StyledLink>
+          <StyledLink to="/Lend">
+            <ContinueBtn>View Loan</ContinueBtn>
           </StyledLink>
         </BtnContainer>
       </Container>
@@ -51,4 +54,4 @@ const Result = () => {
   );
 };
 
-export default Result;
+export default LendResult;
