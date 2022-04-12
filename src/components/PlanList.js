@@ -3,8 +3,9 @@ import styled from "styled-components";
 import axios from "axios";
 
 import FlexCenter from "./common/FlexCenter";
-
 import StyledBtn from "./common/StyledBtn";
+
+import NoConnection from "./NoConnection";
 
 const ListHeader = () => {
   const HeaderWrapper = styled.div`
@@ -45,30 +46,6 @@ const ListHeader = () => {
   );
 };
 
-const NoConnection = () => {
-  const NoConnectionWrapper = styled(FlexCenter)`
-    flex-direction: column;
-    height: 400px;
-  `;
-
-  const Alert = styled.div`
-    &:first-child {
-      font-size: 24px;
-    }
-    &:nth-child(2) {
-      font-size: 18px;
-    }
-    margin: 5px 0;
-  `;
-
-  return (
-    <NoConnectionWrapper>
-      <Alert>Wallet Connection Not Found.</Alert>
-      <Alert>Please connect wallet first.</Alert>
-    </NoConnectionWrapper>
-  );
-};
-
 const StopBtn = () => {
   const Btn = styled(StyledBtn)`
     background-color: pink;
@@ -91,48 +68,48 @@ const WithdrawBtn = () => {
   );
 };
 
-const Plan = () => {
-  const ItemWrapper = styled.div`
-    border: 1px solid blue;
-    border-radius: 10px;
-    width: 95%;
-    height: 60px;
-    display: flex;
-    justify-content: center;
-    margin: 5px 0;
-  `;
+const ItemWrapper = styled.div`
+  border: 1px solid blue;
+  border-radius: 10px;
+  width: 95%;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  margin: 5px 0;
+`;
 
-  const Wrapper = styled(FlexCenter)`
+const Wrapper = styled(FlexCenter)`
+  flex-direction: column;
+`;
+
+const Value = styled(FlexCenter)`
+  border: 1px solid red;
+  width: 150px;
+  font-weight: 500;
+  &:nth-child(1) {
+    width: 100px;
+  }
+  &:nth-child(2) {
+    width: 80px;
+  }
+
+  &:nth-child(3) {
+    width: 80px;
+  }
+  &:nth-child(4) {
     flex-direction: column;
-  `;
+    width: 160px;
+  }
+  &:nth-child(5) {
+    width: 80px;
+  }
+`;
 
-  const Value = styled(FlexCenter)`
-    border: 1px solid red;
-    width: 150px;
-    font-weight: 500;
-    &:nth-child(1) {
-      width: 100px;
-    }
-    &:nth-child(2) {
-      width: 80px;
-    }
+const BtnContainer = styled(FlexCenter)`
+  width: 230px;
+`;
 
-    &:nth-child(3) {
-      width: 80px;
-    }
-    &:nth-child(4) {
-      flex-direction: column;
-      width: 160px;
-    }
-    &:nth-child(5) {
-      width: 80px;
-    }
-  `;
-
-  const BtnContainer = styled(FlexCenter)`
-    width: 230px;
-  `;
-
+const Plan = () => {
   return (
     <Wrapper>
       <ItemWrapper>
@@ -153,43 +130,42 @@ const Plan = () => {
   );
 };
 
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const Indexes = styled(FlexCenter)`
+  border: 1px solid black;
+  height: 32px;
+  font-weight: 500;
+`;
+
+const Index = styled(FlexCenter)`
+  /* border: 1px solid blue; */
+  width: 150px;
+  font-size: 18px;
+  &:nth-child(1) {
+    margin-left: 10px;
+    width: 125px;
+  }
+  &:nth-child(2) {
+    width: 80px;
+  }
+  &:nth-child(3) {
+    width: 80px;
+  }
+  &:nth-child(4) {
+  }
+  &:nth-child(5) {
+    width: 80px;
+  }
+  &:nth-child(6) {
+    width: 250px;
+    margin-right: 10px;
+  }
+`;
 const PlanContainer = () => {
-  const Container = styled.div`
-    display: flex;
-    flex-direction: column;
-  `;
-
-  const Indexes = styled(FlexCenter)`
-    border: 1px solid black;
-    height: 32px;
-    font-weight: 500;
-  `;
-
-  const Index = styled(FlexCenter)`
-    /* border: 1px solid blue; */
-    width: 150px;
-    font-size: 18px;
-    &:nth-child(1) {
-      margin-left: 10px;
-      width: 125px;
-    }
-    &:nth-child(2) {
-      width: 80px;
-    }
-    &:nth-child(3) {
-      width: 80px;
-    }
-    &:nth-child(4) {
-    }
-    &:nth-child(5) {
-      width: 80px;
-    }
-    &:nth-child(6) {
-      width: 250px;
-      margin-right: 10px;
-    }
-  `;
-
   return (
     <>
       <Container>
