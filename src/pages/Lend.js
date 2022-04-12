@@ -25,7 +25,7 @@ const Lend = ({
           setIsConnected={setIsConnected}
           chainId={chainId}
         />
-        <PlanList />
+        <PlanList isConnected={isConnected} account={account} />
       </Container>
     </Background>
   );
