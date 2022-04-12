@@ -91,8 +91,6 @@ const ListWrapper = styled.div`
   align-items: center;
 `;
 
-import StyledBtn from "./common/StyledBtn";
-
 const BtnContainer = styled.div`
   border: 1px solid pink;
   display: flex;
@@ -328,7 +326,6 @@ const PlanList = ({ isConnected, account }) => {
 
   return (
     <div>
-<<<<<<< HEAD
       <ListHeader />
       <OuterWrapper>
         <Indexes>
@@ -358,16 +355,6 @@ const PlanList = ({ isConnected, account }) => {
           </ListWrapper>
         </PreviewLink>
       </OuterWrapper>
-=======
-      {isConnected ? (
-        <>
-          <ListHeader />
-          <PlanContainer />
-        </>
-      ) : (
-        <NoConnection />
-      )}
->>>>>>> 0564f86391e3bf10ee4a9db0f742fbbfdf7d4acb
     </div>
   );
 };
