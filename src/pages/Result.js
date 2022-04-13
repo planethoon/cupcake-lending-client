@@ -32,9 +32,7 @@ const Title = styled.div`
   justify-content: center;
 `;
 
-const Result = () => {
-  const [curTab, setCurTab] = useState(`Loan`);
-
+const Result = ({ setCurTab }) => {
   return (
     <Background>
       <OuterHeader />
@@ -42,7 +40,12 @@ const Result = () => {
         <ResultTab />
         <Title>Successed!</Title>
         <BtnContainer>
-          <StyledLink to="/borrow">
+          <StyledLink
+            to="/borrow"
+            onClick={() => {
+              setCurTab(`loan`);
+            }}
+          >
             <ContinueBtn>Continue</ContinueBtn>
           </StyledLink>
         </BtnContainer>

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import FlexCenter from "./common/FlexCenter";
+import StyledBtn from "./common/StyledBtn";
 
 const ItemWrapper = styled.div`
   border: 1px solid blue;
@@ -59,6 +60,10 @@ const Value = styled(FlexCenter)`
   }
 `;
 
+const Btn = styled(StyledBtn)`
+  background-color: pink;
+`;
+
 // 정렬 차후에 픽셀단위로 변경 예정
 
 const LoanListItem = ({
@@ -69,6 +74,9 @@ const LoanListItem = ({
   earn,
   createdAt,
   status,
+  setIsModalActive,
+  loanInfo,
+  setCurLoan,
 }) => {
   const duedate = new Date((createdAt + duration) * 1000);
 
@@ -90,7 +98,18 @@ const LoanListItem = ({
         .toString()
         .slice(25, 33)}`}</Value>
       <Value>{status}</Value>
-      <Value>action</Value>
+      <Value>
+        {status === "inprogress" ? (
+          <Btn
+            onClick={() => {
+              setIsModalActive(true);
+              setCurLoan(loanInfo);
+            }}
+          >
+            Repay
+          </Btn>
+        ) : null}
+      </Value>
       <Value />
     </ItemWrapper>
   );

@@ -15,6 +15,7 @@ function App() {
   const ethereum = window.ethereum;
   const [account, setAccount] = useState(null);
   const [chainId, setChainId] = useState(null);
+  const [curTab, setCurTab] = useState(`asset`);
 
   // console.log("체인 아이디 추적", chainId);
 
@@ -62,6 +63,8 @@ function App() {
               account={account}
               setAccount={setAccount}
               chainId={chainId}
+              curTab={curTab}
+              setCurTab={setCurTab}
             />
           }
         />
@@ -78,7 +81,7 @@ function App() {
           }
         />
         <Route path="/nftcard" element={<NftCard />} />
-        <Route path="/result" element={<Result />} />
+        <Route path="/result" element={<Result setCurTab={setCurTab} />} />
         <Route path="/*" element={<NotFound />} />
         <Route path="/AddPlan" element={<AddPlan />} />
         <Route path="/LendResult" element={<LendResult />} />
