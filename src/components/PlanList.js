@@ -4,6 +4,7 @@ import axios from "axios";
 
 import FlexCenter from "./common/FlexCenter";
 import StyledBtn from "./common/StyledBtn";
+import StyledLink from "../components/common/StyledLink";
 
 import NoConnection from "./NoConnection";
 
@@ -40,7 +41,9 @@ const ListHeader = () => {
         <div>Your Plan</div>
       </Title>
       <AddPlanWrapper>
-        <AddPlanBtn>+ Add Plan</AddPlanBtn>
+        <StyledLink to="/AddPlan">
+          <AddPlanBtn>+ Add Plan</AddPlanBtn>
+        </StyledLink>
       </AddPlanWrapper>
     </HeaderWrapper>
   );
@@ -92,7 +95,6 @@ const Value = styled(FlexCenter)`
   &:nth-child(2) {
     width: 80px;
   }
-
   &:nth-child(3) {
     width: 80px;
   }
@@ -112,20 +114,22 @@ const BtnContainer = styled(FlexCenter)`
 const Plan = () => {
   return (
     <Wrapper>
-      <ItemWrapper>
-        <Value>5 wETH</Value>
-        <Value>50%</Value>
-        <Value>30 Days</Value>
-        <Value>
-          <span>5.230211 wETH</span>
-          <span>(3 wETH)</span>
-        </Value>
-        <Value>In Progress</Value>
-        <BtnContainer>
-          <StopBtn />
-          <WithdrawBtn />
-        </BtnContainer>
-      </ItemWrapper>
+      <StyledLink to="/loan">
+        <ItemWrapper>
+          <Value>5 wETH</Value>
+          <Value>50%</Value>
+          <Value>30 Days</Value>
+          <Value>
+            <span>5.230211 wETH</span>
+            <span>(3 wETH)</span>
+          </Value>
+          <Value>In Progress</Value>
+          <BtnContainer>
+            <StopBtn />
+            <WithdrawBtn />
+          </BtnContainer>
+        </ItemWrapper>
+      </StyledLink>
     </Wrapper>
   );
 };
