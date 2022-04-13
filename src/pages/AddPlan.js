@@ -13,7 +13,7 @@ import StyledLink from "../components/common/StyledLink";
 import PickaPlan from "../components/PickaPlan";
 
 const CardList = styled.div`
-  height: 400px;
+  height: 200px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 15px 5px;
@@ -50,8 +50,10 @@ const BtnContainer = styled.div`
 `;
 
 const Title = styled.div`
+  display: flex;
   font-size: 24px;
   margin: 20px 0;
+  justify-content: center;
 `;
 
 function AddPlan() {
@@ -87,7 +89,6 @@ function AddPlan() {
             <CardContainer>
               <div>Duration: 14일</div>
               <div>APR: 20%</div>
-              <div>Repay: 4wETH</div>
             </CardContainer>
           </Card>
 
@@ -96,7 +97,6 @@ function AddPlan() {
               {" "}
               <div>Duration: 30일</div>
               <div>APR: 30%</div>
-              <div>Repay: 11wETH</div>
             </CardContainer>
           </Card>
 
@@ -105,23 +105,22 @@ function AddPlan() {
               {" "}
               <div>Duration: 90일</div>
               <div>APR: 40%</div>
-              <div>Repay: 25wETH</div>
             </CardContainer>
           </Card>
-          <Title>플랜을 참여하시겠습니까?</Title>
-          <BtnContainer>
-            <StyledLink to="/borrow">
-              <LandingBtn>NO</LandingBtn>
-            </StyledLink>
-            <LandingBtn
-              onClick={() => {
-                connectWallet();
-              }}
-            >
-              <StyledLink to="/LendResult">YES</StyledLink>
-            </LandingBtn>
-          </BtnContainer>
         </CardList>
+        <Title>플랜을 참여하시겠습니까?</Title>
+        <BtnContainer>
+          <StyledLink to="/lend">
+            <LandingBtn>NO</LandingBtn>
+          </StyledLink>
+          <LandingBtn
+            onClick={() => {
+              connectWallet();
+            }}
+          >
+            <StyledLink to="/LendResult">YES</StyledLink>
+          </LandingBtn>
+        </BtnContainer>
       </Container>
     </Background>
   );

@@ -43,7 +43,7 @@ const LendResult = () => {
         <Title>Successed!</Title>
         <BtnContainer>
           <StyledLink to="/AddPlan">
-            <ContinueBtn>add a Plan</ContinueBtn>
+            <ContinueBtn>add another Plan</ContinueBtn>
           </StyledLink>
           <StyledLink to="/Lend">
             <ContinueBtn>View Loan</ContinueBtn>

@@ -8,7 +8,7 @@ import StyledBtn from "../components/common/StyledBtn";
 import StyledLink from "../components/common/StyledLink";
 
 const OuterWrapper = styled.div`
-  border: 1px solid pink;
+  border: 1px solid gray;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -51,23 +51,34 @@ const CloseBtn = styled(StyledBtn)`
   width: 150px;
 `;
 
-const LoanList = () => {
+const Box = styled.div`
+  display: flex;
+  border: 1px solid pink;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+`;
+
+const Aloan = () => {
   return (
     <OuterWrapper>
-      <NftInfo>
-        <Title>NFT Info</Title>
-        <img src="https://via.placeholder.com/350" />
-        <span>Collection Name</span>
-        <span>NFT Number</span>
-      </NftInfo>
-      <LoanInfo>
-        <Title>Loan Info</Title>
-        <span>Loan Volume - 2.0 wETH</span>
-        <span>Duration - 30 Days</span>
-        <spna>APR - 30%</spna>
-        <spna>Repayment - 2.05 wETH</spna>
-        <span>status - in progress</span>
-      </LoanInfo>
+      <Box>
+        <NftInfo>
+          <Title>NFT Info</Title>
+          <img src="https://via.placeholder.com/350" />
+          <span>Collection Name</span>
+          <span>NFT Number</span>
+        </NftInfo>
+        <LoanInfo>
+          <Title>Loan Info</Title>
+          <span>Loan Volume - 2.0 wETH</span>
+          <span>Duration - 30 Days</span>
+          <spna>APR - 30%</spna>
+          <spna>Repayment - 2.05 wETH</spna>
+          <span>status - in progress</span>
+        </LoanInfo>
+      </Box>
       <BtnContainer>
         <StyledLink to="/Loan">
           <CloseBtn>Close</CloseBtn>
@@ -77,4 +88,4 @@ const LoanList = () => {
   );
 };
 
-export default LoanList;
+export default Aloan;
