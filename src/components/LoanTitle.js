@@ -19,7 +19,7 @@ const Description = styled(FlexCenter)`
   margin: 8px 0;
 `;
 
-const LoanList = () => {
+const LoanTitle = () => {
   return (
     <InnerHeaderContainer>
       <div>
@@ -31,4 +31,4 @@ const LoanList = () => {
   );
 };
 
-export default LoanList;
+export default LoanTitle;

@@ -13,7 +13,7 @@ import StyledLink from "../components/common/StyledLink";
 import PickaPlan from "../components/PickaPlan";
 
 const CardList = styled.div`
-  height: 400px;
+  height: 200px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 15px 5px;
@@ -50,8 +50,10 @@ const BtnContainer = styled.div`
 `;
 
 const Title = styled.div`
+  display: flex;
   font-size: 24px;
   margin: 20px 0;
+  justify-content: center;
 `;
 
 function NftCard() {
@@ -108,20 +110,21 @@ function NftCard() {
               <div>Repay: 25wETH</div>
             </CardContainer>
           </Card>
-          <Title>대출을 진행하시겠습니까?</Title>
-          <BtnContainer>
-            <StyledLink to="/borrow">
-              <LandingBtn>NO</LandingBtn>
-            </StyledLink>
-            <LandingBtn
-              onClick={() => {
-                connectWallet();
-              }}
-            >
-              <StyledLink to="/result">YES</StyledLink>
-            </LandingBtn>
-          </BtnContainer>
         </CardList>
+        <Title>대출을 진행하시겠습니까?</Title>
+
+        <BtnContainer>
+          <StyledLink to="/borrow">
+            <LandingBtn>NO</LandingBtn>
+          </StyledLink>
+          <LandingBtn
+            onClick={() => {
+              connectWallet();
+            }}
+          >
+            <StyledLink to="/result">YES</StyledLink>
+          </LandingBtn>
+        </BtnContainer>
       </Container>
     </Background>
   );
