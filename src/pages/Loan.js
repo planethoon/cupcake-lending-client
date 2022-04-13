@@ -66,7 +66,7 @@ const Loan = ({
       <OuterHeader />
       <Container>
         <LoanTitle />
-        <StyledLink to="/LoanInformation">
+        <StyledLink to="/loaninfo">
           <LoanList />
         </StyledLink>
       </Container>

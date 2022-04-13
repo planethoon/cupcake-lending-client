@@ -13,7 +13,7 @@ import LoanDetail from "../components/LoanDetail";
 import AssetList from "../components/AssetList";
 import ALoan from "../components/ALoan";
 
-const LoanInformation = () => {
+const LoanInfo = () => {
   return (
     <Background>
       <OuterHeader />
@@ -25,4 +25,4 @@ const LoanInformation = () => {
   );
 };
 
-export default LoanInformation;
+export default LoanInfo;

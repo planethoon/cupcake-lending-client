@@ -9,7 +9,7 @@ import Result from "./pages/Result";
 import AddPlan from "./pages/AddPlan";
 import LendResult from "./pages/LendResult";
 import Loan from "./pages/Loan";
-import LoanInformation from "./pages/LoanInformation";
+import LoanInfo from "./pages/LoanInfo";
 
 function App() {
   const ethereum = window.ethereum;
@@ -82,11 +82,11 @@ function App() {
         />
         <Route path="/nftcard" element={<NftCard />} />
         <Route path="/result" element={<Result setCurTab={setCurTab} />} />
+        <Route path="/addplan" element={<AddPlan />} />
+        <Route path="/lendresult" element={<LendResult />} />
+        <Route path="/loan" element={<Loan />} />
+        <Route path="/loaninfo" element={<LoanInfo />} />
         <Route path="/*" element={<NotFound />} />
-        <Route path="/AddPlan" element={<AddPlan />} />
-        <Route path="/LendResult" element={<LendResult />} />
-        <Route path="/Loan" element={<Loan />} />
-        <Route path="/LoanInformation" element={<LoanInformation />} />
       </Routes>
     </div>
   );
