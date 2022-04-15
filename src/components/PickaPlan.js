@@ -6,19 +6,6 @@ import FlexCenter from "./common/FlexCenter";
 
 // components below
 
-const InnerHeaderContainer = styled(FlexCenter)`
-  flex-direction: column;
-  background-color: skyblue;
-  height: 100px;
-  position: relative;
-  ali
-`;
-
-const Description = styled(FlexCenter)`
-  font-size: 40px;
-  margin: 8px 0;
-`;
-
 const PickaPlan = () => {
   return (
     <InnerHeaderContainer>
@@ -32,3 +19,17 @@ const PickaPlan = () => {
 };
 
 export default PickaPlan;
+
+//Style below
+
+const InnerHeaderContainer = styled(FlexCenter)`
+  flex-direction: column;
+  background-color: skyblue;
+  height: 100px;
+  position: relative;
+`;
+
+const Description = styled(FlexCenter)`
+  font-size: 40px;
+  margin: 8px 0;
+`;

@@ -2,22 +2,9 @@ import React from "react";
 import styled from "styled-components";
 
 // styles below
-import FlexCenter from "./common/FlexCenter";
+import FlexCenter from "../common/FlexCenter";
 
 // components below
-
-const InnerHeaderContainer = styled(FlexCenter)`
-  flex-direction: column;
-  background-color: skyblue;
-  height: 150px;
-  position: relative;
-  ali
-`;
-
-const Description = styled(FlexCenter)`
-  font-size: 40px;
-  margin: 8px 0;
-`;
 
 const LoanTitle = () => {
   return (
@@ -32,3 +19,17 @@ const LoanTitle = () => {
 };
 
 export default LoanTitle;
+
+// Style below
+
+const InnerHeaderContainer = styled(FlexCenter)`
+  flex-direction: column;
+  background-color: skyblue;
+  height: 150px;
+  position: relative;
+`;
+
+const Description = styled(FlexCenter)`
+  font-size: 40px;
+  margin: 8px 0;
+`;

@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
 
-import FlexCenter from "./common/FlexCenter";
-import StyledBtn from "./common/StyledBtn";
-import StyledLink from "../components/common/StyledLink";
+import FlexCenter from "../common/FlexCenter";
+import StyledBtn from "../common/StyledBtn";
+import StyledLink from "../common/StyledLink";
 
-import NoConnection from "./NoConnection";
+import NoConnection from "../NoConnection";
 
 const ListHeader = () => {
   const HeaderWrapper = styled.div`
@@ -216,3 +216,5 @@ const PlanList = ({ isConnected, account }) => {
 };
 
 export default PlanList;
+
+//Style below

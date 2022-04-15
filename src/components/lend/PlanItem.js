@@ -1,5 +1,26 @@
 import styled from "styled-components";
-import FlexCenter from "./common/FlexCenter";
+import FlexCenter from "../common/FlexCenter";
+
+const PlanItem = ({ originalPrice, apr, duration, earn, status }) => {
+  return (
+    <ItemWrapper>
+      <Value />
+
+      <Value>{`${originalPrice} wETH`}</Value>
+      <Value>{apr}</Value>
+      <Value>{`${duration / 86400} Days`}</Value>
+      <Value>{`${earn} wETH`}</Value>
+
+      <Value>{status}</Value>
+      <Value>action</Value>
+      <Value />
+    </ItemWrapper>
+  );
+};
+
+export default PlanItem;
+
+//Style below
 
 const ItemWrapper = styled.div`
   border: 1px solid blue;
@@ -50,29 +71,3 @@ const Value = styled(FlexCenter)`
 `;
 
 // 정렬 차후에 픽셀단위로 변경 예정
-
-const PlanItem = ({
-  originalPrice,
-  apr,
-  duration,
-  earn,
-
-  status,
-}) => {
-  return (
-    <ItemWrapper>
-      <Value />
-
-      <Value>{`${originalPrice} wETH`}</Value>
-      <Value>{apr}</Value>
-      <Value>{`${duration / 86400} Days`}</Value>
-      <Value>{`${earn} wETH`}</Value>
-
-      <Value>{status}</Value>
-      <Value>action</Value>
-      <Value />
-    </ItemWrapper>
-  );
-};
-
-export default PlanItem;

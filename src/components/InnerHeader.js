@@ -6,42 +6,8 @@ import styled from "styled-components";
 import FlexCenter from "./common/FlexCenter";
 
 // components below
-import BorrowTab from "./BorrowTab";
+import BorrowTab from "./borrow/BorrowTab";
 import WalletInfo from "./WalletInfo";
-
-const InnerHeaderContainer = styled(FlexCenter)`
-  flex-direction: column;
-  background-color: skyblue;
-  height: 200px;
-  position: relative;
-`;
-
-const Description = styled(FlexCenter)`
-  font-size: 16px;
-  margin: 8px 0;
-`;
-
-const Amount = styled(FlexCenter)`
-  font-size: 36px;
-  font-weight: 700;
-`;
-
-const LendHeaderStyle = styled(FlexCenter)`
-  width: 80%;
-  justify-content: space-around;
-`;
-
-const DescriptionWrapper = styled.div``;
-
-const ConnectBtn = styled(FlexCenter)`
-  cursor: pointer;
-  width: 200px;
-  height: 50px;
-  border: 1px solid black;
-  font-size: 18px;
-  background-color: pink;
-  border-radius: 10px;
-`;
 
 // components below
 
@@ -162,3 +128,39 @@ const InnerHeader = ({
 };
 
 export default InnerHeader;
+
+//Style below
+
+const InnerHeaderContainer = styled(FlexCenter)`
+  flex-direction: column;
+  background-color: skyblue;
+  height: 200px;
+  position: relative;
+`;
+
+const Description = styled(FlexCenter)`
+  font-size: 16px;
+  margin: 8px 0;
+`;
+
+const Amount = styled(FlexCenter)`
+  font-size: 36px;
+  font-weight: 700;
+`;
+
+const LendHeaderStyle = styled(FlexCenter)`
+  width: 80%;
+  justify-content: space-around;
+`;
+
+const DescriptionWrapper = styled.div``;
+
+const ConnectBtn = styled(FlexCenter)`
+  cursor: pointer;
+  width: 200px;
+  height: 50px;
+  border: 1px solid black;
+  font-size: 18px;
+  background-color: pink;
+  border-radius: 10px;
+`;

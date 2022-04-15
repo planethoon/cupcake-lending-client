@@ -5,7 +5,7 @@ import Container from "../components/common/Container";
 import OuterHeader from "../components/OuterHeader";
 
 import InnerHeader from "../components/InnerHeader";
-import PlanList from "../components/PlanList";
+import PlanList from "../components/lend/PlanList";
 
 const Lend = ({
   account,
