@@ -4,6 +4,39 @@ import styled from "styled-components";
 import FlexCenter from "./common/FlexCenter";
 import StyledLink from "./common/StyledLink";
 
+const OuterHeader = () => {
+  const location = useLocation();
+
+  console.log(location.pathname);
+
+  return (
+    <Wrapper>
+      <Icon>🧁</Icon>
+      <NavBtns>
+        <StyledLink to="/borrow">
+          {location.pathname === `/borrow` ? (
+            <NavBtnsSelected>Borrow</NavBtnsSelected>
+          ) : (
+            <NavBtn>Borrow</NavBtn>
+          )}
+        </StyledLink>
+        <StyledLink to="/lend">
+          {location.pathname === `/lend` ? (
+            <NavBtnsSelected>Lend</NavBtnsSelected>
+          ) : (
+            <NavBtn>Lend</NavBtn>
+          )}
+        </StyledLink>
+      </NavBtns>
+      <div></div>
+    </Wrapper>
+  );
+};
+
+export default OuterHeader;
+
+//Style below
+
 const Wrapper = styled.div`
   position: absolute;
   top: 0;
@@ -43,34 +76,3 @@ const NavBtn = styled(FlexCenter)`
 const NavBtnsSelected = styled(NavBtn)`
   background-color: pink;
 `;
-
-const OuterHeader = () => {
-  const location = useLocation();
-
-  console.log(location.pathname);
-
-  return (
-    <Wrapper>
-      <Icon>🧁</Icon>
-      <NavBtns>
-        <StyledLink to="/borrow">
-          {location.pathname === `/borrow` ? (
-            <NavBtnsSelected>Borrow</NavBtnsSelected>
-          ) : (
-            <NavBtn>Borrow</NavBtn>
-          )}
-        </StyledLink>
-        <StyledLink to="/lend">
-          {location.pathname === `/lend` ? (
-            <NavBtnsSelected>Lend</NavBtnsSelected>
-          ) : (
-            <NavBtn>Lend</NavBtn>
-          )}
-        </StyledLink>
-      </NavBtns>
-      <div></div>
-    </Wrapper>
-  );
-};
-
-export default OuterHeader;

@@ -6,19 +6,6 @@ import FlexCenter from "./common/FlexCenter";
 
 // components below
 
-const InnerHeaderContainer = styled(FlexCenter)`
-  flex-direction: column;
-  background-color: skyblue;
-  height: 150px;
-  position: relative;
-  ali
-`;
-
-const Description = styled(FlexCenter)`
-  font-size: 40px;
-  margin: 8px 0;
-`;
-
 const LoanDetail = () => {
   return (
     <InnerHeaderContainer>
@@ -32,3 +19,17 @@ const LoanDetail = () => {
 };
 
 export default LoanDetail;
+
+//Style below
+
+const InnerHeaderContainer = styled(FlexCenter)`
+  flex-direction: column;
+  background-color: skyblue;
+  height: 150px;
+  position: relative;
+`;
+
+const Description = styled(FlexCenter)`
+  font-size: 40px;
+  margin: 8px 0;
+`;

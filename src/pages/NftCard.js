@@ -12,50 +12,6 @@ import StyledLink from "../components/common/StyledLink";
 // components below
 import PickaPlan from "../components/PickaPlan";
 
-const CardList = styled.div`
-  height: 200px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 15px 5px;
-  overflow-y: auto;
-  align-content: center;
-`;
-
-const CardContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  jjustify-content: center;
-`;
-
-const Card = styled.div`
-  flex-direction: column;
-  background-color: lightgray;
-  height: 100px;
-  position: relative;
-  margin: 20px;
-`;
-
-const LandingBtn = styled(StyledBtn)`
-  background-color: grey;
-  width: 100px;
-`;
-
-const BtnContainer = styled.div`
-  border: 1px solid pink;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
-`;
-
-const Title = styled.div`
-  display: flex;
-  font-size: 24px;
-  margin: 20px 0;
-  justify-content: center;
-`;
-
 function NftCard() {
   const [web3, setWeb3] = useState();
   const [account, setAccount] = useState("");
@@ -131,3 +87,49 @@ function NftCard() {
 }
 
 export default NftCard;
+
+//Style below
+
+const CardList = styled.div`
+  height: 200px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px 5px;
+  overflow-y: auto;
+  align-content: center;
+`;
+
+const CardContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  jjustify-content: center;
+`;
+
+const Card = styled.div`
+  flex-direction: column;
+  background-color: lightgray;
+  height: 100px;
+  position: relative;
+  margin: 20px;
+`;
+
+const LandingBtn = styled(StyledBtn)`
+  background-color: grey;
+  width: 100px;
+`;
+
+const BtnContainer = styled.div`
+  border: 1px solid pink;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+`;
+
+const Title = styled.div`
+  display: flex;
+  font-size: 24px;
+  margin: 20px 0;
+  justify-content: center;
+`;

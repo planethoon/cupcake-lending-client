@@ -3,6 +3,19 @@ import styled from "styled-components";
 
 import FlexCenter from "./common/FlexCenter";
 
+const NoConnection = () => {
+  return (
+    <NoConnectionWrapper>
+      <Alert>Wallet Connection Not Found.</Alert>
+      <Alert>Please connect wallet first.</Alert>
+    </NoConnectionWrapper>
+  );
+};
+
+export default NoConnection;
+
+//Style below
+
 const NoConnectionWrapper = styled(FlexCenter)`
   flex-direction: column;
   height: 400px;
@@ -17,14 +30,3 @@ const Alert = styled.div`
   }
   margin: 5px 0;
 `;
-
-const NoConnection = () => {
-  return (
-    <NoConnectionWrapper>
-      <Alert>Wallet Connection Not Found.</Alert>
-      <Alert>Please connect wallet first.</Alert>
-    </NoConnectionWrapper>
-  );
-};
-
-export default NoConnection;

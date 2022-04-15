@@ -20,6 +20,7 @@ function App() {
   // console.log("체인 아이디 추적", chainId);
 
   const [isConnected, setIsConnected] = useState(false);
+
   useEffect(() => {
     ethereum.request({ method: "eth_chainId" }).then((res) => {
       setChainId(res);

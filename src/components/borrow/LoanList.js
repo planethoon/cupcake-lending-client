@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import FlexCenter from "./common/FlexCenter";
+import FlexCenter from "../common/FlexCenter";
 
 import LoanListItem from "./LoanListItem";
 
@@ -70,6 +70,47 @@ const dummyData = [
   },
 ];
 
+const LoanList = ({ setIsModalActive, setCurLoan }) => {
+  return (
+    <OuterWrapper>
+      <Indexes>
+        <Index />
+        <Index>
+          <span>Loan</span>
+          <span>Volume</span>
+        </Index>
+        <Index>APR</Index>
+        <Index>Duration</Index>
+        <Index>Repayment</Index>
+        <Index>Due Date</Index>
+        <Index>Status</Index>
+        <Index>Action</Index>
+        <Index />
+      </Indexes>
+      <ListWrapper>
+        {dummyData.map((e) => (
+          <LoanListItem
+            img={e.img}
+            originalPrice={e.originalPrice}
+            apr={e.apr}
+            duration={e.duration}
+            earn={e.earn}
+            createdAt={e.createdAt}
+            status={e.status}
+            setIsModalActive={setIsModalActive}
+            setCurLoan={setCurLoan}
+            loanInfo={e}
+          />
+        ))}
+      </ListWrapper>
+    </OuterWrapper>
+  );
+};
+
+export default LoanList;
+
+//Style below
+
 const OuterWrapper = styled(FlexCenter)`
   height: 400px;
   flex-direction: column;
@@ -128,42 +169,3 @@ const ListWrapper = styled.div`
   flex-direction: column;
   align-items: center;
 `;
-
-const LoanList = ({ setIsModalActive, setCurLoan }) => {
-  return (
-    <OuterWrapper>
-      <Indexes>
-        <Index />
-        <Index>
-          <span>Loan</span>
-          <span>Volume</span>
-        </Index>
-        <Index>APR</Index>
-        <Index>Duration</Index>
-        <Index>Repayment</Index>
-        <Index>Due Date</Index>
-        <Index>Status</Index>
-        <Index>Action</Index>
-        <Index />
-      </Indexes>
-      <ListWrapper>
-        {dummyData.map((e) => (
-          <LoanListItem
-            img={e.img}
-            originalPrice={e.originalPrice}
-            apr={e.apr}
-            duration={e.duration}
-            earn={e.earn}
-            createdAt={e.createdAt}
-            status={e.status}
-            setIsModalActive={setIsModalActive}
-            setCurLoan={setCurLoan}
-            loanInfo={e}
-          />
-        ))}
-      </ListWrapper>
-    </OuterWrapper>
-  );
-};
-
-export default LoanList;

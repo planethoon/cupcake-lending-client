@@ -11,27 +11,6 @@ import StyledLink from "../components/common/StyledLink";
 // components below
 import ResultTab from "../components/ResultTab";
 
-const ContinueBtn = styled(StyledBtn)`
-  background-color: grey;
-  width: 150px;
-`;
-
-const BtnContainer = styled.div`
-  border: 1px solid pink;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
-`;
-
-const Title = styled.div`
-  display: flex;
-  font-size: 24px;
-  margin: 20px 0;
-  align-items: center;
-  justify-content: center;
-`;
-
 const LendResult = () => {
   const [curTab, setCurTab] = useState(`Loan`);
 
@@ -55,3 +34,26 @@ const LendResult = () => {
 };
 
 export default LendResult;
+
+//Style below
+
+const ContinueBtn = styled(StyledBtn)`
+  background-color: grey;
+  width: 150px;
+`;
+
+const BtnContainer = styled.div`
+  border: 1px solid pink;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+`;
+
+const Title = styled.div`
+  display: flex;
+  font-size: 24px;
+  margin: 20px 0;
+  align-items: center;
+  justify-content: center;
+`;

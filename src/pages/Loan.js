@@ -9,8 +9,8 @@ import OuterHeader from "../components/OuterHeader";
 import StyledBtn from "../components/common/StyledBtn";
 import StyledLink from "../components/common/StyledLink";
 import FlexCenter from "../components/common/FlexCenter";
-import LoanList from "../components/LoanList";
-import LoanTitle from "../components/LoanTitle";
+import LoanList from "../components/borrow/LoanList";
+import LoanTitle from "../components/loan/LoanTitle";
 
 // components below
 
@@ -33,6 +33,97 @@ const dummy = [
   { img: "https://via.placeholder.com/650", price: 11 },
   { img: "https://via.placeholder.com/650", price: 0.3 },
 ];
+
+const RepayModal = ({ account, loanInfo, setIsModalActive }) => {
+  const { img, originalPrice, apr, duration, earn } = loanInfo;
+
+  console.log("론 정보", loanInfo);
+
+  const repayLoan = () => {
+    console.log("Request Repay Loan");
+    setIsModalActive(false);
+  };
+
+  return (
+    <ModalWrapper>
+      <ModalBackground
+        onClick={() => {
+          setIsModalActive(false);
+        }}
+      />
+      <ModalContainer>
+        <Header>Repaying Loan</Header>
+        <LoanInfo>
+          <Image>
+            <img src={img} alt="preview" />
+          </Image>
+          <Value>
+            <span>Loan Volume</span>
+            <span>{`${originalPrice} wETH`}</span>
+          </Value>
+          <Value>
+            <span>APR</span>
+            <span>{apr}</span>
+          </Value>
+          <Value>
+            <span>Duration</span>
+            <span>{`${duration / 86400} Days`}</span>
+          </Value>
+          <Value>
+            <span>Repayment</span>
+            <span>{`${earn} wETH`}</span>
+          </Value>
+        </LoanInfo>
+        <AccountInfo>
+          <Text>
+            <span>Make sure transfer</span>
+            <span>{` ${earn} wETH`}</span>
+          </Text>
+          <Text>
+            <span>from </span>
+            <span>{`${account}`}</span>
+          </Text>
+        </AccountInfo>
+        <BtnWrapper>
+          <Btn
+            onClick={() => {
+              setIsModalActive(false);
+            }}
+          >
+            Cancel
+          </Btn>
+          <Btn onClick={repayLoan}>Accept</Btn>
+        </BtnWrapper>
+      </ModalContainer>
+    </ModalWrapper>
+  );
+};
+
+const Loan = ({ account, setAccount, chainId, curTab, setCurTab }) => {
+  const [isModalActive, setIsModalActive] = useState(false);
+  const [curLoan, setCurLoan] = useState({});
+
+  return (
+    <Background>
+      <OuterHeader />
+      <Container>
+        <LoanTitle />
+        <LoanList setIsModalActive={setIsModalActive} setCurLoan={setCurLoan} />
+      </Container>
+      {isModalActive ? (
+        <RepayModal
+          setIsModalActive={setIsModalActive}
+          loanInfo={curLoan}
+          account={account}
+        />
+      ) : null}
+    </Background>
+  );
+};
+
+export default Loan;
+
+//Style below
 
 const ModalWrapper = styled.div`
   position: absolute;
@@ -124,92 +215,3 @@ const Btn = styled(StyledBtn)`
     background-color: #6fc98d;
   }
 `;
-
-const RepayModal = ({ account, loanInfo, setIsModalActive }) => {
-  const { img, originalPrice, apr, duration, earn } = loanInfo;
-
-  console.log("론 정보", loanInfo);
-
-  const repayLoan = () => {
-    console.log("Request Repay Loan");
-    setIsModalActive(false);
-  };
-
-  return (
-    <ModalWrapper>
-      <ModalBackground
-        onClick={() => {
-          setIsModalActive(false);
-        }}
-      />
-      <ModalContainer>
-        <Header>Repaying Loan</Header>
-        <LoanInfo>
-          <Image>
-            <img src={img} alt="preview" />
-          </Image>
-          <Value>
-            <span>Loan Volume</span>
-            <span>{`${originalPrice} wETH`}</span>
-          </Value>
-          <Value>
-            <span>APR</span>
-            <span>{apr}</span>
-          </Value>
-          <Value>
-            <span>Duration</span>
-            <span>{`${duration / 86400} Days`}</span>
-          </Value>
-          <Value>
-            <span>Repayment</span>
-            <span>{`${earn} wETH`}</span>
-          </Value>
-        </LoanInfo>
-        <AccountInfo>
-          <Text>
-            <span>Make sure transfer</span>
-            <span>{` ${earn} wETH`}</span>
-          </Text>
-          <Text>
-            <span>from </span>
-            <span>{`${account}`}</span>
-          </Text>
-        </AccountInfo>
-        <BtnWrapper>
-          <Btn
-            onClick={() => {
-              setIsModalActive(false);
-            }}
-          >
-            Cancel
-          </Btn>
-          <Btn onClick={repayLoan}>Accept</Btn>
-        </BtnWrapper>
-      </ModalContainer>
-    </ModalWrapper>
-  );
-};
-
-const Loan = ({ account, setAccount, chainId, curTab, setCurTab }) => {
-  const [isModalActive, setIsModalActive] = useState(false);
-  const [curLoan, setCurLoan] = useState({});
-
-  return (
-    <Background>
-      <OuterHeader />
-      <Container>
-        <LoanTitle />
-        <LoanList setIsModalActive={setIsModalActive} setCurLoan={setCurLoan} />
-      </Container>
-      {isModalActive ? (
-        <RepayModal
-          setIsModalActive={setIsModalActive}
-          loanInfo={curLoan}
-          account={account}
-        />
-      ) : null}
-    </Background>
-  );
-};
-
-export default Loan;

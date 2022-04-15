@@ -2,20 +2,8 @@ import React from "react";
 import styled from "styled-components";
 
 //styles below
-import FlexCenter from "./common/FlexCenter";
-import StyledBtn from "./common/StyledBtn";
-
-const BtnWrapper = styled(FlexCenter)`
-  margin-top: 30px;
-`;
-
-const Btn = styled(StyledBtn)`
-  background-color: grey;
-`;
-
-const BtnSelected = styled(Btn)`
-  background-color: pink;
-`;
+import FlexCenter from "../common/FlexCenter";
+import StyledBtn from "../common/StyledBtn";
 
 const BorrowTab = ({ switchToAsset, switchToLoan, curTab }) => {
   return (
@@ -35,3 +23,17 @@ const BorrowTab = ({ switchToAsset, switchToLoan, curTab }) => {
 };
 
 export default BorrowTab;
+
+//Style below
+
+const BtnWrapper = styled(FlexCenter)`
+  margin-top: 30px;
+`;
+
+const Btn = styled(StyledBtn)`
+  background-color: grey;
+`;
+
+const BtnSelected = styled(Btn)`
+  background-color: pink;
+`;
