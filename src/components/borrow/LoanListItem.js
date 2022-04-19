@@ -1,3 +1,4 @@
+import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import FlexCenter from "../common/FlexCenter";
 import StyledBtn from "../common/StyledBtn";
@@ -15,6 +16,7 @@ const LoanListItem = ({
   setCurLoan,
 }) => {
   const duedate = new Date((createdAt + duration) * 1000);
+  const location = useLocation();
 
   return (
     <ItemWrapper>
@@ -35,7 +37,7 @@ const LoanListItem = ({
         .slice(25, 33)}`}</Value>
       <Value>{status}</Value>
       <Value>
-        {status === "inprogress" ? (
+        {status === "inprogress" && location.pathname === "borrow" ? (
           <Btn
             onClick={() => {
               setIsModalActive(true);
@@ -43,6 +45,15 @@ const LoanListItem = ({
             }}
           >
             Repay
+          </Btn>
+        ) : status === "overdue" && location.pathname === "/loan" ? (
+          <Btn
+            onClick={() => {
+              setIsModalActive(true);
+              setCurLoan(loanInfo);
+            }}
+          >
+            Claim
           </Btn>
         ) : null}
       </Value>

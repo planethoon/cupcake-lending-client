@@ -85,7 +85,7 @@ function App() {
         <Route path="/result" element={<Result setCurTab={setCurTab} />} />
         <Route path="/addplan" element={<AddPlan />} />
         <Route path="/lendresult" element={<LendResult />} />
-        <Route path="/loan" element={<Loan />} />
+        <Route path="/loan" element={<Loan account={account} />} />
         <Route path="/loaninfo" element={<LoanInfo />} />
         <Route path="/*" element={<NotFound />} />
       </Routes>

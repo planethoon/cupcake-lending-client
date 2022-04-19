@@ -3,71 +3,62 @@ import styled from "styled-components";
 import axios from "axios";
 
 import FlexCenter from "../common/FlexCenter";
-import StyledBtn from "../common/StyledBtn";
 import StyledLink from "../common/StyledLink";
 
 import NoConnection from "../NoConnection";
+import StopBtn from "./StopBtn";
+import WithdrawBtn from "./WithdrawBtn";
+import AddPlanBtn from "./AddPlanBtn";
 
 const ListHeader = () => {
-  const HeaderWrapper = styled.div`
-    display: flex;
-    justify-content: space-between;
-    border: 1px solid red;
-    height: 50px;
-  `;
-
-  const Title = styled(FlexCenter)`
-    font-size: 24px;
-    margin-left: 24px;
-    font-weight: 600;
-  `;
-
-  const AddPlanWrapper = styled(FlexCenter)`
-    margin-right: 24px;
-  `;
-
-  const AddPlanBtn = styled(FlexCenter)`
-    border: 1px solid green;
-    padding: 5px 10px;
-    border-radius: 10px;
-    background-color: green;
-    color: white;
-    cursor: pointer;
-  `;
-
   return (
     <HeaderWrapper>
       <Title>
         <div>Your Plan</div>
       </Title>
       <AddPlanWrapper>
-        <StyledLink to="/AddPlan">
-          <AddPlanBtn>+ Add Plan</AddPlanBtn>
-        </StyledLink>
+        <AddPlanBtn />
       </AddPlanWrapper>
     </HeaderWrapper>
   );
 };
 
-const StopBtn = () => {
-  const Btn = styled(StyledBtn)`
-    background-color: pink;
-  `;
+const HeaderWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid red;
+  height: 50px;
+`;
 
-  const [isStopped, setIsStopped] = useState(false);
+const Title = styled(FlexCenter)`
+  font-size: 24px;
+  margin-left: 24px;
+  font-weight: 600;
+`;
 
-  return <>{isStopped ? <Btn>Resume</Btn> : <Btn>Stop</Btn>}</>;
-};
+const AddPlanWrapper = styled(FlexCenter)`
+  margin-right: 24px;
+`;
 
-const WithdrawBtn = () => {
-  const Btn = styled(StyledBtn)`
-    background-color: pink;
-  `;
-
+const Plan = ({ loanInfo }) => {
   return (
-    <>
-      <Btn>Withdraw</Btn>
-    </>
+    <Wrapper>
+      <ItemWrapper>
+        <Value>5 wETH</Value>
+        <Value>50%</Value>
+        <Value>30 Days</Value>
+        <Value>
+          <span>5.230211 wETH</span>
+          <span>(3 wETH)</span>
+        </Value>
+        <Value>In Progress</Value>
+        <BtnContainer>
+          <StopBtn loanInfo={loanInfo} />
+          <WithdrawBtn loanInfo={loanInfo} />
+        </BtnContainer>
+        <LoanLink to="/loan" />
+      </ItemWrapper>
+    </Wrapper>
   );
 };
 
@@ -79,6 +70,7 @@ const ItemWrapper = styled.div`
   display: flex;
   justify-content: center;
   margin: 5px 0;
+  position: relative;
 `;
 
 const Wrapper = styled(FlexCenter)`
@@ -108,29 +100,32 @@ const Value = styled(FlexCenter)`
 `;
 
 const BtnContainer = styled(FlexCenter)`
-  width: 230px;
+  /* width: 230px; */
+  z-index: 99;
 `;
 
-const Plan = () => {
+const LoanLink = styled(StyledLink)`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+`;
+
+const PlanContainer = () => {
   return (
-    <Wrapper>
-      <StyledLink to="/loan">
-        <ItemWrapper>
-          <Value>5 wETH</Value>
-          <Value>50%</Value>
-          <Value>30 Days</Value>
-          <Value>
-            <span>5.230211 wETH</span>
-            <span>(3 wETH)</span>
-          </Value>
-          <Value>In Progress</Value>
-          <BtnContainer>
-            <StopBtn />
-            <WithdrawBtn />
-          </BtnContainer>
-        </ItemWrapper>
-      </StyledLink>
-    </Wrapper>
+    <>
+      <Container>
+        <Indexes>
+          <Index>Plan Volume</Index>
+          <Index>APR</Index>
+          <Index>Duration</Index>
+          <Index>Earn(Available)</Index>
+          <Index>Status</Index>
+          <Index>Action</Index>
+        </Indexes>
+        <Plan />
+      </Container>
+    </>
   );
 };
 
@@ -169,23 +164,6 @@ const Index = styled(FlexCenter)`
     margin-right: 10px;
   }
 `;
-const PlanContainer = () => {
-  return (
-    <>
-      <Container>
-        <Indexes>
-          <Index>Plan Volume</Index>
-          <Index>APR</Index>
-          <Index>Duration</Index>
-          <Index>Earn(Available)</Index>
-          <Index>Status</Index>
-          <Index>Action</Index>
-        </Indexes>
-        <Plan />
-      </Container>
-    </>
-  );
-};
 
 const PlanList = ({ isConnected, account }) => {
   const [planlist, setPlanlist] = useState({});
